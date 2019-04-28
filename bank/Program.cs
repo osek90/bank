@@ -32,7 +32,6 @@ namespace bank
 
             printer.Print(billingAccount);
             
-           
             Console.ReadKey();
         }
     }

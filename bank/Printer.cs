@@ -12,7 +12,7 @@ namespace bank
         {
             Console.WriteLine("Dane Konta: ");
             Console.WriteLine("Numer konta: {0}", account.AccountNumber);
-            Console.WriteLine("Saldo: {0}zł", account.Balane);
+            Console.WriteLine("Saldo: {0}zł", account.Balance);
             Console.WriteLine("Imie właściciela: {0}", account.FirstName);
             Console.WriteLine("Nazwisko właściciela: {0}", account.LastName);
             Console.WriteLine("PESEL: {0}", account.Pesel);
@@ -23,7 +23,7 @@ namespace bank
         {
             Console.WriteLine("Dane Konta: ");
             Console.WriteLine("Numer konta: {0}", account.AccountNumber);
-            Console.WriteLine("Saldo: {0}zł", account.Balane);
+            Console.WriteLine("Saldo: {0}zł", account.Balance);
             Console.WriteLine("Imie właściciela: {0}", account.FirstName);
             Console.WriteLine("Nazwisko właściciela: {0}", account.LastName);
             Console.WriteLine("PESEL: {0}", account.Pesel);
