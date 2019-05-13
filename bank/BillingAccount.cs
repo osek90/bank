@@ -9,7 +9,7 @@ namespace bank
     class BillingAccount: Account
     {
 
-        public BillingAccount (int id, string accountNumber, decimal balance, string firstName, string lastName, long pesel)
+        public BillingAccount (int id, string firstName, string lastName, long pesel)
             : base (id, firstName, lastName, pesel)
         {
            

@@ -17,16 +17,16 @@ namespace bank
             Console.WriteLine();
             
 
-            SavingAccount savingAccount = new SavingAccount("9000000000001", 0.0M, "Jan", "Kalosz", 90092104856);
+            SavingAccount savingAccount = new SavingAccount(1, "Jan", "Kalosz", 90092104856);
             
            
-            SavingAccount savingAccount2 = new SavingAccount("9000000000002", 0.0M, "Anna", "Jarosz", 92032305345);
+            SavingAccount savingAccount2 = new SavingAccount(2, "Anna", "Jarosz", 92032305345);
 
 
-            BillingAccount billingAccount = new BillingAccount("8000000000001", 100.00M, savingAccount.FirstName, savingAccount.LastName, savingAccount.Pesel);
-           
+            BillingAccount billingAccount = new BillingAccount(1, savingAccount.FirstName, savingAccount.LastName, savingAccount.Pesel);
 
-            Printer printer = new Printer();
+
+            IPrinter printer = new SmallerPrinter();
             printer.Print(savingAccount);
             printer.Print(savingAccount2);
 
