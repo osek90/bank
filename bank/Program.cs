@@ -15,22 +15,22 @@ namespace bank
             Console.WriteLine(name);
             Console.WriteLine(author);
             Console.WriteLine();
-            
 
-            SavingAccount savingAccount = new SavingAccount(1, "Jan", "Kalosz", 90092104856);
-            
+            List<Account> accounts = new List<Account>();
+            accounts.Add(new SavingAccount(1, "Jan", "Kalosz", 90092104856));
+            accounts.Add(new SavingAccount(2, "Jan", "Nowak", 93022504566));
+            accounts.Add(new SavingAccount(3, "Marcin", "Drab", 84031103456));
+            accounts.Add(new SavingAccount(4, "Anna", "Zez", 75011135678));
+            accounts.Add(new SavingAccount(5, "Kamila", "Raz", 95062666844));
+            accounts.Add(new BillingAccount(6, "Jan", "Kalosz", 90092104856));
+            accounts.Add(new BillingAccount(7, "Jan", "Nowak", 93022504556));
+
+
            
-            SavingAccount savingAccount2 = new SavingAccount(2, "Anna", "Jarosz", 92032305345);
-
-
-            BillingAccount billingAccount = new BillingAccount(1, savingAccount.FirstName, savingAccount.LastName, savingAccount.Pesel);
-
-
-            IPrinter printer = new SmallerPrinter();
-            printer.Print(savingAccount);
-            printer.Print(savingAccount2);
-
-            printer.Print(billingAccount);
+            Printer printer = new Printer();
+            printer.Print(accounts[0]);
+            printer.Print(accounts[1]);
+            printer.Print(accounts[2]);
             
             Console.ReadKey();
         }
