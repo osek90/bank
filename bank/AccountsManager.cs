@@ -28,5 +28,102 @@ namespace bank
             }
             return id;
         }
+        public SavingAccount CreateSavingAccount(string firstName, string lastName, long pesel)
+        {
+            int id = generateId();
+
+            SavingAccount account = new SavingAccount(id, firstName, lastName, pesel);
+            _accounts.Add(account);
+
+            return account;
+        }
+        public BillingAccount CreateBillingAccount(string firstName, string lastName, long pesel)
+        {
+            int id = generateId();
+
+            BillingAccount account = new BillingAccount(id, firstName, lastName, pesel);
+            _accounts.Add(account);
+
+            return account;
+        }
+        public IEnumerable<Account> GeAllAccountsFor(string firstName, string lastName, long pesel)
+        {
+            /* List<Account> customerAccounts = new List<Account>();
+
+             foreach (Account account in _accounts)
+             {
+                 if(account.FirstName == firstName && account.LastName== lastName && account.Pesel == pesel)
+                 {
+                     customerAccounts.Add(account);
+                 }
+             }
+             return customerAccounts;
+             */
+            // metoda LINQ
+            return _accounts.Where(x => x.FirstName == firstName && x.LastName == lastName && x.Pesel == pesel);
+        }
+        public Account GetAccount(string accountNo)
+        {
+            /* Account account;
+
+             foreach(Account acc in _accounts)
+             {
+                 if(acc.AccountNumber == accountNo)
+                 {
+                     account = acc;
+                     break;
+                 }
+
+             }
+
+             return account;*/
+            return _accounts.Single(x => x.AccountNumber == accountNo);
+        }
+        public IEnumerable<string> ListofCustomers()
+        {
+            return _accounts.Select(a => string.Format("Imie : {0} | Nazwisko: {1} | PESEL: {2}", a.FirstName, a.LastName, a.Pesel)).Distinct();
+            /*
+            string users;
+            List<string> us =new List<string>();
+            foreach(Account acc in _accounts)
+            {
+                string imie = acc.FirstName;
+                int flag = 0 ;
+                string naz = acc.LastName;
+                string PESEL = acc.Pesel.ToString();
+                users = string.Format("Imie: {0} | Nazwisko: {1} | PESEL: {2}", imie, naz, PESEL);
+                foreach(var user in us)
+                {
+                    if (user == users) flag = 1;
+                }
+                if(flag!=1) us.Add(users);
+
+            }
+            return us;
+            */
+        }
+        public void CloseMonth()
+        {
+            foreach(SavingAccount account in _accounts.Where(x => x is SavingAccount))
+            {
+                account.AddInterest(0.04M);
+            }
+            foreach (BillingAccount account in _accounts.Where(x => x is BillingAccount))
+            {
+                account.TakeCharge(5.0M);
+            }
+        }
+        public void AddMoney(string accountNo, decimal value)
+        {
+            Account account = GetAccount(accountNo);
+            account.ChangeBalance(value);
+        }
+
+        public void TakeMoney(string accountNo, decimal value)
+        {
+            Account account = GetAccount(accountNo);
+            account.ChangeBalance(-value);
+        }
+
     }
 }

@@ -16,21 +16,21 @@ namespace bank
             Console.WriteLine(author);
             Console.WriteLine();
 
-            List<Account> accounts = new List<Account>();
-            accounts.Add(new SavingAccount(1, "Jan", "Kalosz", 90092104856));
-            accounts.Add(new SavingAccount(2, "Jan", "Nowak", 93022504566));
-            accounts.Add(new SavingAccount(3, "Marcin", "Drab", 84031103456));
-            accounts.Add(new SavingAccount(4, "Anna", "Zez", 75011135678));
-            accounts.Add(new SavingAccount(5, "Kamila", "Raz", 95062666844));
-            accounts.Add(new BillingAccount(6, "Jan", "Kalosz", 90092104856));
-            accounts.Add(new BillingAccount(7, "Jan", "Nowak", 93022504556));
+            AccountsManager manager = new AccountsManager();
+            manager.CreateBillingAccount("Jan", "Kalosz", 90092104856);
+            manager.CreateBillingAccount("Kamila", "Raz", 95062666844);
+            manager.CreateSavingAccount("Jan", "Kalosz", 90092104856);
 
+            IEnumerable<string> users = manager.ListofCustomers();
+        
 
            
             Printer printer = new Printer();
-            printer.Print(accounts[0]);
-            printer.Print(accounts[1]);
-            printer.Print(accounts[2]);
+            
+            foreach(string user in users)
+            {
+                Console.WriteLine(user);
+            }
             
             Console.ReadKey();
         }

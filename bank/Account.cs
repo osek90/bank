@@ -10,7 +10,7 @@ namespace bank
     {
         public int Id { get; }
         public string AccountNumber { get; }
-        public decimal Balance { get; }
+        public decimal Balance { get; protected set; }
         public string FirstName { get; }
         public string LastName { get; }
         public long Pesel { get; }
@@ -43,6 +43,10 @@ namespace bank
             var accountNumber = string.Format("94{0:D10}", id);
 
             return accountNumber;
+        }
+        public void ChangeBalance(decimal value)
+        {
+            Balance += value;
         }
     }
 }
