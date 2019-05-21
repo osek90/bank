@@ -12,10 +12,14 @@ namespace bank
         {
             var name = "Name: Bank";
             string author= "Author: Mati Osa";
+
             Console.WriteLine(name);
             Console.WriteLine(author);
             Console.WriteLine();
 
+            BankManager bankManager = new BankManager();
+            bankManager.Run();
+            /*
             AccountsManager manager = new AccountsManager();
             manager.CreateBillingAccount("Jan", "Kalosz", 90092104856);
             manager.CreateBillingAccount("Kamila", "Raz", 95062666844);
@@ -32,7 +36,7 @@ namespace bank
                 Console.WriteLine(user);
             }
             
-            Console.ReadKey();
+            Console.ReadKey();*/
         }
     }
 }

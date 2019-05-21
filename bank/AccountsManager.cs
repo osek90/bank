@@ -46,7 +46,7 @@ namespace bank
 
             return account;
         }
-        public IEnumerable<Account> GeAllAccountsFor(string firstName, string lastName, long pesel)
+        public IEnumerable<Account> GetAllAccountsFor(string firstName, string lastName, long pesel)
         {
             /* List<Account> customerAccounts = new List<Account>();
 
@@ -79,7 +79,7 @@ namespace bank
              return account;*/
             return _accounts.Single(x => x.AccountNumber == accountNo);
         }
-        public IEnumerable<string> ListofCustomers()
+        public IEnumerable<string> ListOfCustomers()
         {
             return _accounts.Select(a => string.Format("Imie : {0} | Nazwisko: {1} | PESEL: {2}", a.FirstName, a.LastName, a.Pesel)).Distinct();
             /*
